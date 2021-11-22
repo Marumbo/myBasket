@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Basket extends StatelessWidget {
-  //const Basket({ Key? key }) : super(key: key);
-
+class MyBasket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Basket"),
+          title: Column(children: [
+            Center(child: Text("Welcome User")),
+            Center(
+              child: Text("This is your Basket!"),
+            )
+          ]),
         ),
         body: ListView.builder(
             itemCount: 15,
