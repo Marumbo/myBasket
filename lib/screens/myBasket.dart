@@ -13,7 +13,7 @@ class MyBasket extends StatelessWidget {
           ]),
         ),
         body: ListView.builder(
-            itemCount: 15,
+            itemCount: 12,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                   onTap: () => Navigator.pushNamed(context, '/itemPage'),
