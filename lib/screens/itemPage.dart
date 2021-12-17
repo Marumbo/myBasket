@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_basket/screens/priceSuggestion.dart';
 
 class ItemPage extends StatefulWidget {
   @override
@@ -17,33 +18,12 @@ class _ItemPageState extends State<ItemPage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return Container(
-                      height: height * 0.8,
-                      child: Center(
-                          child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Add Suggested Price:"),
-                          TextField(
-                            keyboardType: TextInputType.name,
-                            decoration: InputDecoration(labelText: 'Name'),
-                          ),
-                          TextField(
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(labelText: 'Age'),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {}, child: Text('Submit'))
-                        ],
-                      )));
-                });
+            // Navigator.pushNamed(context, '/priceSuggestion');
+            Navigator.of(context).push(new MaterialPageRoute<Null>(
+                builder: (BuildContext context) {
+                  return new PriceSuggestionPage();
+                },
+                fullscreenDialog: true));
           },
           child: Icon(Icons.add),
         ),

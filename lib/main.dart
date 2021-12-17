@@ -3,9 +3,12 @@ import 'package:my_basket/screens/aboutUs.dart';
 import 'package:my_basket/screens/basket.dart';
 import 'package:my_basket/screens/itemPage.dart';
 import 'package:my_basket/screens/myBasket.dart';
+import 'package:my_basket/screens/priceSuggestion.dart';
 import 'package:my_basket/screens/suggestions.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -55,7 +58,8 @@ class _MyAppState extends State<MyApp> {
           '/basket': (context) => Basket(),
           '/itemPage': (context) => ItemPage(),
           '/suggestions': (context) => Suggestions(),
-          '/aboutUs': (context) => AboutUs()
+          '/aboutUs': (context) => AboutUs(),
+          '/priceSuggestion': (context) => PriceSuggestionPage()
         });
   }
 }
