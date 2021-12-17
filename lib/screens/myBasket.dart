@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:my_basket/models/userModel.dart';
+import 'package:provider/provider.dart';
 
 class MyBasket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var user = Provider.of<User>(context);
+
     return Scaffold(
         appBar: AppBar(
           title: Column(children: [
-            Center(child: Text("Welcome User")),
+            Center(child: Text("Welcome ${user.firstName}")),
             Center(
               child: Text("This is your Basket!"),
             )

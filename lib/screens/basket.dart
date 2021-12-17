@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_basket/services/firestoreAuthService.dart';
 
 class Basket extends StatelessWidget {
   //const Basket({ Key? key }) : super(key: key);
@@ -8,6 +9,10 @@ class Basket extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("Basket"),
+          actions: [
+            IconButton(
+                icon: Icon(Icons.logout), onPressed: () => signOut(context))
+          ],
         ),
         body: ListView.builder(
             itemCount: 15,
