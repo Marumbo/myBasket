@@ -2,6 +2,7 @@ class User {
   final String userId;
   final String firstName;
   final String lastName;
+<<<<<<< HEAD
   final String email;
   final String location;
 
@@ -26,4 +27,9 @@ class User {
       location: json['location'] ?? "",
     );
   }
+=======
+  final String location;
+
+  User({this.userId, this.firstName, this.lastName, this.location});
+>>>>>>> 00f9df6d5eb9b5579431431f115b909c4779195d
 }
