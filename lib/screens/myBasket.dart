@@ -6,6 +6,25 @@ class MyBasket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
+    if (user == null) {
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
+    if (user.userId.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Column(children: [
+            Center(child: Text("Welcome")),
+            Center(
+              child: Text("This is your Basket!"),
+            )
+          ]),
+        ),
+        body: Center(
+          child: Text("No User Available!"),
+        ),
+      );
+    }
 
     return Scaffold(
         appBar: AppBar(
