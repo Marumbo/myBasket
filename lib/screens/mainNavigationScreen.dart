@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_basket/models/priceModel.dart';
+import 'package:my_basket/providers/mainBasketProvider.dart';
 import 'package:my_basket/screens/aboutUs.dart';
 import 'package:my_basket/screens/basket.dart';
 import 'package:my_basket/screens/itemPage.dart';
@@ -7,6 +9,7 @@ import 'package:my_basket/screens/myBasket.dart';
 import 'package:my_basket/screens/priceSuggestion.dart';
 import 'package:my_basket/screens/suggestions.dart';
 import 'package:my_basket/services/authenticate.dart';
+import 'package:my_basket/services/mainBasketService.dart';
 import 'package:my_basket/services/userService.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +23,7 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   var userService = UserService();
+  var mainBasketService = MainBasketService();
 
   int currentIndex = 0;
   @override
@@ -33,10 +37,16 @@ class _MainNavigationState extends State<MainNavigation> {
         theme: ThemeData(primarySwatch: Colors.blue),
         home: MultiProvider(
           providers: [
+            ChangeNotifierProvider(
+              create: (context) => MainBasketProvider(),
+            ),
             StreamProvider(
                 create: (context) =>
                     userService.userStream(_auth.currentUser.uid),
                 initialData: null),
+            // StreamProvider<List<Price>>(
+            //   create: (context) => MainBasketProvider().toothpastePrice,
+            //  initialData: null)
           ],
           child: Scaffold(
             body: IndexedStack(

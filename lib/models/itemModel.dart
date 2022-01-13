@@ -24,7 +24,7 @@ class Item {
       this.downvote,
       this.dateTime});
 
-  Map toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'itemId': itemId,
       'itemName': name,
@@ -39,12 +39,12 @@ class Item {
     };
   }
 
-  factory Item.fromJson(Map<String, dynamic> json) {
+  factory Item.fromJson(Map<dynamic, dynamic> json) {
     return Item(
         itemId: json['itemId'] ?? "",
         name: json['itemName'] ?? "",
         description: json['description'] ?? "",
-        bestPrice: int.parse(json['price']) ?? 0,
+        bestPrice: double.parse(json['price']) ?? 0.0,
         location: json['location'] ?? "",
         moreLocationDetails: json['moreLocationDetails'] ?? "",
         shopName: json['shopName'] ?? "",
