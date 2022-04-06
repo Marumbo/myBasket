@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_basket/models/itemModel.dart';
 import 'package:my_basket/models/priceModel.dart';
 import 'package:my_basket/providers/mainBasketProvider.dart';
+import 'package:my_basket/providers/priceProvider.dart';
 import 'package:my_basket/screens/aboutUs.dart';
 import 'package:my_basket/screens/basket.dart';
 import 'package:my_basket/screens/itemPage.dart';
@@ -37,16 +39,19 @@ class _MainNavigationState extends State<MainNavigation> {
         theme: ThemeData(primarySwatch: Colors.blue),
         home: MultiProvider(
           providers: [
+            StreamProvider(
+                create: (context) => mainBasketService.itemStream(),
+                initialData: null),
             ChangeNotifierProvider(
               create: (context) => MainBasketProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (context) => PriceProvider(),
             ),
             StreamProvider(
                 create: (context) =>
                     userService.userStream(_auth.currentUser.uid),
                 initialData: null),
-            // StreamProvider<List<Price>>(
-            //   create: (context) => MainBasketProvider().toothpastePrice,
-            //  initialData: null)
           ],
           child: Scaffold(
             body: IndexedStack(

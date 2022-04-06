@@ -1,6 +1,6 @@
 class Item {
   final String itemId;
-  final String name;
+  final String itemName;
   final String imageUrl;
   final String description;
   final double bestPrice;
@@ -13,7 +13,7 @@ class Item {
 
   Item(
       {this.itemId,
-      this.name,
+      this.itemName,
       this.imageUrl,
       this.description,
       this.bestPrice,
@@ -27,7 +27,7 @@ class Item {
   Map<String, dynamic> toMap() {
     return {
       'itemId': itemId,
-      'itemName': name,
+      'itemName': itemName,
       'description': description,
       'price': bestPrice,
       'location': location,
@@ -41,15 +41,16 @@ class Item {
 
   factory Item.fromJson(Map<dynamic, dynamic> json) {
     return Item(
-        itemId: json['itemId'] ?? "",
-        name: json['itemName'] ?? "",
-        description: json['description'] ?? "",
-        bestPrice: double.parse(json['price']) ?? 0.0,
-        location: json['location'] ?? "",
-        moreLocationDetails: json['moreLocationDetails'] ?? "",
-        shopName: json['shopName'] ?? "",
-        upvote: int.parse(json['upVotes']) ?? 0,
-        downvote: int.parse(json['downVotes']) ?? 0,
-        dateTime: DateTime.parse(json['dateTime']) ?? DateTime.now());
+      itemId: json['itemId'] ?? "",
+      itemName: json['itemName'] ?? "",
+      description: json['description'] ?? "",
+      bestPrice: (json['price'] as num).toDouble() ?? 0.0,
+      location: json['location'] ?? "",
+      moreLocationDetails: json['moreLocationDetails'] ?? "",
+      shopName: json['shopName'] ?? "",
+      upvote: int.parse(json['upVotes'].toString()) ?? 0,
+      downvote: int.parse(json['downVotes'].toString()) ?? 0,
+      //dateTime: DateTime.parse(json['dateTime']) ?? DateTime.now()
+    );
   }
 }

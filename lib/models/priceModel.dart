@@ -20,7 +20,7 @@ class Price {
       this.dateTime,
       this.suggestorUserId});
 
-  Map toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'priceId': priceId,
       'price': price,
@@ -29,20 +29,23 @@ class Price {
       'shopName': shopName,
       'upVotes': upvote,
       'downVotes': downvote,
-      'dateTime': dateTime,
+      //  'dateTime': dateTime,
       'suggestorUserId': suggestorUserId
     };
   }
 
   factory Price.fromJson(Map<String, dynamic> json) {
+    // print(json);
+
     return Price(
-        priceId: json['priceId'] ?? "",
-        price: int.parse(json['price']) ?? 0,
-        location: json['location'] ?? "",
-        moreLocationDetails: json['moreLocationDetails'] ?? "",
-        shopName: json['shopName'] ?? "",
-        upvote: int.parse(json['upVotes']) ?? 0,
-        downvote: int.parse(json['downVotes']) ?? 0,
-        dateTime: DateTime.parse(json['dateTime']) ?? DateTime.now());
+      priceId: json['priceId'].toString() ?? "",
+      price: (json['price'] as num).toDouble() ?? 0.0,
+      location: json['location'] ?? "",
+      moreLocationDetails: json['moreLocationDetails'] ?? "",
+      shopName: json['shopName'] ?? "",
+      upvote: (json['upVotes'] as num) ?? 0,
+      downvote: (json['downVotes'] as num) ?? 0,
+      //dateTime: DateTime.parse(json['dateTime']) ?? DateTime.now()
+    );
   }
 }

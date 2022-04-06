@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_basket/models/userModel.dart';
+import 'package:provider/provider.dart';
 
 class Suggestions extends StatefulWidget {
   //const Suggestions({Key key}) : super(key: key);
@@ -10,9 +12,11 @@ class Suggestions extends StatefulWidget {
 class _SuggestionsState extends State<Suggestions> {
   @override
   Widget build(BuildContext context) {
+    var user = Provider.of<User>(context);
+
     return Scaffold(
         appBar: AppBar(
-          title: Text("Suggestions"),
+          title: Text("Suggestions ${user.lastName}"),
         ),
         body: SingleChildScrollView(
             child: Padding(
