@@ -27,6 +27,8 @@ class _ItemPageState extends State<ItemPage> {
     //var priceList = priceProvider.getPriceList(widget.item.itemId, widget.item.itemName);
     var priceSub = MainBasketService().pricesStream(item.itemId, item.itemName);
 
+    var faveIds = MainBasketService().favoriteList();
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
