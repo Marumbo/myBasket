@@ -46,7 +46,7 @@ class MyBasket extends StatelessWidget {
             initialData: [],
             builder: (context, favoritesData) {
               if (favoritesData.hasError) {
-                return Text(favoritesData.error);
+                return Text(favoritesData.error.toString());
               }
               if (favoritesData.connectionState == ConnectionState.none ||
                   favoritesData.hasData == null) {
